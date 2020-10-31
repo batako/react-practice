@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  react:
+    build:
+      context: .
+      dockerfile: ./docker/react/Dockerfile.dev
+      args:
+        WORKDIR: /front
+        LOCALDIR: ./react
+    container_name: react
+    stdin_open: true
+    ports:
+     - 8080:8080
+    volumes:
+      - ./react:/front:cached
+      - node_modules:/front/node_modules:cached
+      - yarn_cache:/usr/local/share/.cache/yarn/v6:cached # `yarn cache dir`
+    environment:
+      PORT: 8080
+
+volumes:
+  node_modules:
+  yarn_cache:

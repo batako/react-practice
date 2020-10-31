@@ -1,0 +1,17 @@
+FROM node:15.0.1-alpine3.10
+
+ARG WORKDIR
+ARG LOCALDIR
+
+ENV APP_HOME ${WORKDIR:-/front}
+
+# RUN yarn global add create-react-app
+
+WORKDIR $APP_HOME
+ADD [ \
+      "${LOCALDIR}/package.json", \
+      "${LOCALDIR}/yarn.lock", \
+      "./" \
+    ]
+
+RUN yarn install
