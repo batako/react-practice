@@ -8,7 +8,6 @@ import { getEvent, deleteEvent, putEvent } from '../actions/events'
 import Button from '@material-ui/core/Button'
 class EventsShow extends Component {
   constructor(props) {
-    console.log('Event Show')
     super(props)
     this.onSubmit = this.onSubmit.bind(this)
     this.onDeleteClick = this.onDeleteClick.bind(this)
@@ -49,7 +48,6 @@ class EventsShow extends Component {
 
   render() {
     const { handleSubmit, pristine, submitting, invalid } = this.props
-    console.log('submitting', submitting)
 
     return (
       <form onSubmit={ handleSubmit(this.onSubmit) }>
