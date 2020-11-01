@@ -5,7 +5,14 @@ import { Link } from 'react-router-dom'
 
 import { readEvents } from '../actions/events'
 
+import Button from '@material-ui/core/Button'
+
 class EventsIndex extends Component {
+  constructor(props) {
+    super(props)
+    this.moveToEventNewPage = this.moveToEventNewPage.bind(this)
+  }
+
   componentDidMount() {
     this.props.readEvents()
   }
@@ -22,6 +29,10 @@ class EventsIndex extends Component {
         <td>{ event.body }</td>
       </tr>
     ))
+  }
+
+  moveToEventNewPage() {
+    this.props.history.push('/events/new')
   }
 
   render() {
@@ -41,7 +52,12 @@ class EventsIndex extends Component {
           </tbody>
         </table>
 
-        <Link to="/events/new">New Event</Link>
+        {/* <Link to="/events/new">New Event</Link> */}
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={ this.moveToEventNewPage }
+        >New Event</Button>
       </Fragment>
     );
   }
