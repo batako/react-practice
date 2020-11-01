@@ -2,6 +2,7 @@ import _ from 'lodash'
 import {
   READ_EVENT,
   READ_EVENTS,
+  UPDATE_EVENT,
   DELETE_EVENT,
 } from '../actions/events'
 
@@ -12,7 +13,7 @@ export default (events = {}, action) => {
       return { ...events, [data.id]: data }
 
     case READ_EVENTS:
-      // console.log(action.response.data)
+    case UPDATE_EVENT:
       // console.log(_.mapKeys(action.response.data, 'id'))
       return _.mapKeys(action.response.data, 'id')
 
