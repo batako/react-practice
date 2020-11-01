@@ -7,7 +7,7 @@ import {
   DELETE_EVENT,
 } from '../actions/events'
 
-export default (events = {}, action) => {
+const events = (events = {}, action) => {
   switch (action.type) {
     case CREATE_EVENT:
     case READ_EVENT:
@@ -27,3 +27,5 @@ export default (events = {}, action) => {
       return events
   }
 }
+
+export default events
