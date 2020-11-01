@@ -7,6 +7,13 @@ import { readEvents } from '../actions/events'
 
 import Button from '@material-ui/core/Button'
 
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableContainer from '@material-ui/core/TableContainer'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+
 class EventsIndex extends Component {
   constructor(props) {
     super(props)
@@ -19,15 +26,15 @@ class EventsIndex extends Component {
 
   renderEvents() {
     return _.map(this.props.events, event => (
-      <tr key={ event.id }>
-        <td>{ event.id }</td>
-        <td>
+      <TableRow key={ event.id }>
+        <TableCell>{ event.id }</TableCell>
+        <TableCell>
           <Link to={ `/events/${event.id}` }>
             { event.title }
           </Link>
-        </td>
-        <td>{ event.body }</td>
-      </tr>
+        </TableCell>
+        <TableCell>{ event.body }</TableCell>
+      </TableRow>
     ))
   }
 
@@ -38,19 +45,21 @@ class EventsIndex extends Component {
   render() {
     return (
       <Fragment>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>TITLE</th>
-              <th>BODY</th>
-            </tr>
-          </thead>
+        <TableContainer>
+          <Table aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>ID</TableCell>
+                <TableCell>TITLE</TableCell>
+                <TableCell>BODY</TableCell>
+              </TableRow>
+            </TableHead>
 
-          <tbody>
-            { this.renderEvents() }
-          </tbody>
-        </table>
+            <TableBody>
+              { this.renderEvents() }
+            </TableBody>
+          </Table>
+        </TableContainer>
 
         {/* <Link to="/events/new">New Event</Link> */}
         <Button
